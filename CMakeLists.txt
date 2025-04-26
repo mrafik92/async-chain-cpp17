@@ -1,20 +1,20 @@
 cmake_minimum_required(VERSION 3.16)
 
 # Set the project name and version
-project(CPP20Project VERSION 1.0 LANGUAGES CXX)
+project(AsyncChain VERSION 1.0 LANGUAGES CXX)
 
 # Specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(CPP20Project main.cpp)
+add_executable(AsyncChain main.cpp)
 
 # Find the Threads package
 find_package(Threads REQUIRED)
 
 # Add the executable
-target_link_libraries(CPP20Project PRIVATE pthread)
+target_link_libraries(AsyncChain PRIVATE pthread)
 
 ## GoogleTest and GoogleMock via FetchContent
 include(FetchContent)
