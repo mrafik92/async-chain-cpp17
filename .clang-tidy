@@ -1,0 +1,4 @@
+Checks: '*, -llvmlibc-inline-function-decl'
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*'
+FormatStyle: none

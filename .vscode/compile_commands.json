@@ -1,8 +1,38 @@
 [
 {
   "directory": "/workspaces/cpp20/build",
-  "command": "/usr/bin/aarch64-linux-gnu-g++  -O2 -g -std=gnu++17 -fdiagnostics-color=always -o CMakeFiles/AsyncChain.dir/main.cpp.o -c /workspaces/cpp20/main.cpp",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/workspaces/cpp20  -O2 -g -std=gnu++17 -fdiagnostics-color=always -o CMakeFiles/AsyncChain.dir/main.cpp.o -c /workspaces/cpp20/main.cpp",
   "file": "/workspaces/cpp20/main.cpp",
   "output": "CMakeFiles/AsyncChain.dir/main.cpp.o"
+},
+{
+  "directory": "/workspaces/cpp20/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/workspaces/cpp20 -isystem /workspaces/cpp20/build/_deps/googletest-src/googletest/include -isystem /workspaces/cpp20/build/_deps/googletest-src/googletest  -O2 -g -std=gnu++17 -fdiagnostics-color=always -o CMakeFiles/test_async.dir/tests/test_async.cpp.o -c /workspaces/cpp20/tests/test_async.cpp",
+  "file": "/workspaces/cpp20/tests/test_async.cpp",
+  "output": "CMakeFiles/test_async.dir/tests/test_async.cpp.o"
+},
+{
+  "directory": "/workspaces/cpp20/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/workspaces/cpp20/build/_deps/googletest-src/googlemock/include -I/workspaces/cpp20/build/_deps/googletest-src/googlemock -isystem /workspaces/cpp20/build/_deps/googletest-src/googletest/include -isystem /workspaces/cpp20/build/_deps/googletest-src/googletest  -O2 -g -std=c++17 -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /workspaces/cpp20/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/workspaces/cpp20/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/workspaces/cpp20/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -isystem /workspaces/cpp20/build/_deps/googletest-src/googlemock/include -isystem /workspaces/cpp20/build/_deps/googletest-src/googlemock -isystem /workspaces/cpp20/build/_deps/googletest-src/googletest/include -isystem /workspaces/cpp20/build/_deps/googletest-src/googletest  -O2 -g -std=c++17 -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /workspaces/cpp20/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/workspaces/cpp20/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/workspaces/cpp20/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/workspaces/cpp20/build/_deps/googletest-src/googletest/include -I/workspaces/cpp20/build/_deps/googletest-src/googletest  -O2 -g -std=c++17 -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /workspaces/cpp20/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/workspaces/cpp20/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/workspaces/cpp20/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -isystem /workspaces/cpp20/build/_deps/googletest-src/googletest/include -isystem /workspaces/cpp20/build/_deps/googletest-src/googletest  -O2 -g -std=c++17 -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /workspaces/cpp20/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/workspaces/cpp20/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
 }
 ]

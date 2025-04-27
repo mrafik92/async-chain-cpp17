@@ -7,6 +7,8 @@
 #include <type_traits>
 #include <string>
 
+namespace async_chain {
+
 using SchedulerFunction = std::function<void(std::function<void()>, std::size_t delay_ms)>;
 
 inline SchedulerFunction global_scheduler;
@@ -32,6 +34,35 @@ struct Result {
   [[nodiscard]] bool is_ok() const { return value.has_value(); }
   [[nodiscard]] bool is_err() const { return error.has_value(); }
 };
+
+template<typename E>
+struct Result<void, E> {
+  std::optional<E> error;
+
+  static Result Ok() {
+    return Result{std::nullopt};
+  }
+  static Result Err(E err) {
+    return Result{std::move(err)};
+  }
+  [[nodiscard]] bool is_ok() const { return !error.has_value(); }
+  [[nodiscard]] bool is_err() const { return error.has_value(); }
+};
+
+// Exported type aliases for user convenience
+
+template<typename T, typename E = std::string>
+using ResultType = Result<T, E>;
+
+template<typename T, typename E = std::string>
+using StepType = std::function<void(std::function<void(Result<T, E>)>, Result<T, E>)>;
+
+// StepTypeWithAttempts: for steps that receive the number of attempts (used by RetryHolder)
+template<typename T, typename E = std::string>
+using StepTypeWithAttempts = std::function<void(std::function<void(Result<T, E>)>, std::size_t, Result<T, E>)>;
+
+template<typename T, typename E = std::string>
+using NextType = std::function<void(Result<T, E>)>;
 
 template<typename Step>
 struct Holder {
@@ -115,7 +146,6 @@ private:
 
 template<std::size_t MaxRetries, std::size_t DelayMs, typename Step>
 struct RetryDelayedHolder {
-  Step *ptr;
 
   explicit RetryDelayedHolder(Step &ref) : ptr(&ref) {
     static_assert(!std::is_reference_v<Step>, "RetryDelayedHolder should not be used with reference types");
@@ -133,6 +163,8 @@ struct RetryDelayedHolder {
   }
 
 private:
+  Step *ptr;
+
   template<typename Continue>
   void run_step(Continue &&next, size_t attempt) {
     (*ptr)(
@@ -170,18 +202,18 @@ public:
     : steps_(std::tuple_cat(std::move(old_steps), std::make_tuple(std::forward<NewStep>(new_step)))) {
   }
 
-  template<typename NewT, typename NewStep>
-  auto then(NewStep &&new_step) && {
-    using NewHolder = Holder<std::decay_t<NewStep> >;
-    return AsyncChain<NewT, E, StepHolders..., NewHolder>(
-      std::move(steps_), NewHolder(std::forward<NewStep>(new_step)));
+  template<typename Step>
+  auto then(Step &&step) && {
+    using NewHolder = Holder<std::decay_t<Step> >;
+    return AsyncChain<T, E, StepHolders..., NewHolder>(
+      std::move(steps_), NewHolder(std::forward<Step>(step)));
   }
 
-  template<std::size_t MaxRetries, typename NewT, typename NewStep>
-  auto thenWithRetry(NewStep &&new_step) && {
-    using NewHolder = RetryHolder<MaxRetries, std::decay_t<NewStep> >;
-    return AsyncChain<NewT, E, StepHolders..., NewHolder>(
-      std::move(steps_), NewHolder(std::forward<NewStep>(new_step)));
+  template<std::size_t MaxRetries, typename Step>
+  auto thenWithRetry(Step &&step) && {
+    using NewHolder = RetryHolder<MaxRetries, std::decay_t<Step> >;
+    return AsyncChain<T, E, StepHolders..., NewHolder>(
+      std::move(steps_), NewHolder(std::forward<Step>(step)));
   }
 
   template<typename Catcher>
@@ -191,11 +223,11 @@ public:
       std::move(steps_), CatchHolder(std::forward<Catcher>(catcher)));
   }
 
-  template<std::size_t MaxRetries, std::size_t DelayMs, typename NewT, typename NewStep>
-  auto thenWithRetryDelayed(NewStep &&new_step) && {
-    using NewHolder = RetryDelayedHolder<MaxRetries, DelayMs, std::decay_t<NewStep> >;
-    return AsyncChain<NewT, E, StepHolders..., NewHolder>(
-      std::move(steps_), NewHolder(std::forward<NewStep>(new_step)));
+  template<std::size_t MaxRetries, std::size_t DelayMs, typename Step>
+  auto thenWithRetryDelayed(Step &&step) && {
+    using NewHolder = RetryDelayedHolder<MaxRetries, DelayMs, std::decay_t<Step> >;
+    return AsyncChain<T, E, StepHolders..., NewHolder>(
+      std::move(steps_), NewHolder(std::forward<Step>(step)));
   }
 
   template<typename FinalCallback>
@@ -230,3 +262,5 @@ template<typename T, typename E>
 auto initAsyncChain() {
   return AsyncChain<T, E>{};
 }
+
+} // namespace async_chain
