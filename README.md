@@ -1,3 +1,4 @@
+# Async Chain
 # Purpose
 This project provides a modern, type-safe asynchronous chain implementation in C++17 inspired by promise chains and monadic pipelines. It enables composing sequences of asynchronous steps with robust error handling, retries, and delayed retries, all in a fluent and extensible style.
 
@@ -14,16 +15,6 @@ This project provides a modern, type-safe asynchronous chain implementation in C
 - **Error Handling:** Built-in support for error catching, retries, and delayed retries.
 - **Extensibility:** New behaviors can be added by introducing new holder types or custom steps.
 - **Modern C++:** Leverages C++20 features for concise, expressive, and safe code.
-
-# Async Chain
-
-This is a modern C++ project using C++17 features, built with CMake. The project is set up for easy development and testing in a dev container with all necessary C/C++ tools pre-installed.
-
-## Features
-- C++17 standard
-- CMake-based build system
-- GoogleTest and GoogleMock for unit testing (fetched automatically)
-- Ready-to-use development container with GCC, Clang, CMake, Make, Ninja, cppcheck, valgrind, lldb, gdb, vcpkg, and more
 
 ## Getting Started
 
