@@ -1,6 +1,6 @@
-# CPP20Project
+# Async Chain
 
-This is a modern C++ project using C++20 features, built with CMake. The project is set up for easy development and testing in a dev container with all necessary C/C++ tools pre-installed.
+This is a modern C++ project using C++17 features, built with CMake. The project is set up for easy development and testing in a dev container with all necessary C/C++ tools pre-installed.
 
 ## Features
 - C++17 standard
