@@ -69,5 +69,26 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp"
-    }
+    },
+
+    "cmake.configureEnvironment": {
+        "CMAKE_COLOR_DIAGNOSTICS": "ON"
+    },
+    "cmake.copyCompileCommands": "${workspaceFolder}/.vscode/compile_commands.json",
+    "C_Cpp.default.compileCommands": [
+        "${workspaceFolder}/.vscode/compile_commands.json"
+    ],
+    "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.configureArgs": [
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+    ],
+    "cmake.generator": "Ninja",
+    "cmake.cmakeCommandArgs": [
+        "--no-warn-unused-cli"
+    ],
+    "cmake.preferredGenerators": [
+        "Ninja"
+    ]
 }

@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/workspaces/cpp20/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++  -O2 -g -std=gnu++17 -fdiagnostics-color=always -o CMakeFiles/AsyncChain.dir/main.cpp.o -c /workspaces/cpp20/main.cpp",
+  "file": "/workspaces/cpp20/main.cpp",
+  "output": "CMakeFiles/AsyncChain.dir/main.cpp.o"
+}
+]

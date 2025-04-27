@@ -154,6 +154,13 @@ private:
 template<typename T, typename E, typename... StepHolders>
 class AsyncChain {
 public:
+
+  AsyncChain(const AsyncChain &) = delete;
+  AsyncChain(AsyncChain &&) = delete;
+  AsyncChain &operator=(const AsyncChain &) = delete;
+  AsyncChain &operator=(AsyncChain &&) = delete;
+  ~AsyncChain() = default;
+
   explicit AsyncChain(StepHolders &&... holders)
     : steps_(std::forward<StepHolders>(holders)...) {
   }

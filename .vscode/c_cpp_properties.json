@@ -1,17 +1,14 @@
 {
     "configurations": [
         {
-            "name": "Mac",
+            "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/tests/**",
-                "build/_deps/googletest-src/googletest/include",
-                "build/_deps/googletest-src/googlemock/include"
+                "${workspaceFolder}/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
-            "cStandard": "c23",
-            "intelliSenseMode": "macos-clang-arm64"
+            "cStandard": "c17",
+            "intelliSenseMode": "linux-clang-arm64"
         }
     ],
     "version": 4
