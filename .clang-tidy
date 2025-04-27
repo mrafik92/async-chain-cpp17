@@ -1,4 +1,30 @@
-Checks: '*, -llvmlibc-inline-function-decl'
-WarningsAsErrors: ''
-HeaderFilterRegex: '.*'
-FormatStyle: none
+Checks: >
+  -*,
+  bugprone-*,
+  performance-*,
+  readability-*,
+  modernize-*,
+  portability-*,
+  cppcoreguidelines-*,
+  misc-*,
+  clang-analyzer-*,
+  -modernize-use-trailing-return-type,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -readability-identifier-naming
+
+WarningsAsErrors: >
+  bugprone-*,
+  performance-*,
+  clang-analyzer-*
+
+HeaderFilterRegex: '.*'  # Optional: apply checks to headers too
+FormatStyle: file  # Use your .clang-format if you have one
+CheckOptions:
+  - key:             modernize-use-nullptr.NullMacros
+    value:           'NULL'
+  - key:             readability-identifier-naming.VariableCase
+    value:           lower_case
+  - key:             readability-identifier-naming.FunctionCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.ClassCase
+    value:           CamelCase
